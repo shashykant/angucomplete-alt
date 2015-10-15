@@ -530,7 +530,10 @@
             matches[matches.length] = scope.localData[i];
           }
         }
-
+        if(scope.sortmethod)
+        {
+          matches = scope.sortmethod(matches, scope.searchStr);
+        }
         scope.searching = false;
         processResults(matches, str);
       }
@@ -778,6 +781,7 @@
       require: '^?form',
       scope: {
         selectedObject: '=',
+        sortmethod: '=',
         disableInput: '=',
         initialValue: '=',
         localData: '=',
